@@ -7,7 +7,6 @@ import { Productos } from "../components/Productos";
 export const Dashboard = () => {
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
     useEffect(() => {
-        // Aplica el tema en el cuerpo
         document.body.classList.toggle("dark-theme", theme === "dark");
         localStorage.setItem("theme", theme);
     }, [theme]);
