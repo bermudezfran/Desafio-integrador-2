@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {productos} from "../../data/productos.json"
+import { productos } from "../../data/productos.json"
 import "../sass/main.scss";
 import { Modal } from "./modal/Modal";
 import { useCarrito } from "../context/CartStore";
