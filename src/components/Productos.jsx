@@ -1,9 +1,9 @@
-import React from 'react'
-import { Producto } from './Producto';
+  import React from 'react'
+  import { Producto } from './Producto';
 
-export const Productos = () => {
+  export const Productos = () => {
 
-  return (
-    <Producto />
-  )
-}
+    return (
+      <Producto />
+    )
+  }

@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import productos from "../db/productos";
 import "../sass/main.scss";
 import { Modal } from "./modal/Modal";
+import { useCarrito } from "../context/CartStore";
 
 export const Producto = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { agregarAlCarrito } = useCarrito();
 
   const handleOpenModal = (product) => {
     setSelectedProduct(product); 
@@ -17,10 +19,15 @@ export const Producto = () => {
     setIsModalOpen(false); 
   };
 
+  const handleBuyCar = (car) => {
+    agregarAlCarrito(car); 
+    setIsModalOpen(false);
+  };
+
   return (
     <section className="card-container" id="cards-container">
-      {productos.map((prod, idx) => (
-        <div className="card" key={idx}>
+      {productos.map((prod) => (
+        <div className="card" key={prod.id}>
           <article className="card__article">
             <div className="card__image-container">
               <img className="card__image" src={prod.foto} alt={prod.nombre} />
@@ -48,7 +55,7 @@ export const Producto = () => {
                 </p>
                 <p>{selectedProduct.descripcion}</p>
               </div>
-          <button className="card__boton" style={{ margin: 'auto', marginTop: '10px' }}>Comprar</button>
+          <button onClick={() => handleBuyCar(selectedProduct)} className="card__boton" style={{ margin: 'auto', marginTop: '10px' }}>Agregar al carrito</button>
         </Modal>
       )}
     </section>

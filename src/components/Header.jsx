@@ -35,7 +35,7 @@ export const Header = ({ onToggleTheme, theme }) => {
             <Link to="/contacto">Contacto</Link>
           </li>
         </ul>
-        <div className="cart">
+        <div>
             <Link to='/carrito'>
           <svg
             xmlns="http://www.w3.org/2000/svg"
