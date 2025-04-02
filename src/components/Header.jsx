@@ -19,7 +19,7 @@ export const Header = ({ onToggleTheme, theme }) => {
         <div className="logo">
           <Link to={"/"}>
             <img
-              src="/public/images/1000_F_483965542_8gmfwc31msG25ULS5OSx7vMzd23pOMth.jpg"
+              src="/images/1000_F_483965542_8gmfwc31msG25ULS5OSx7vMzd23pOMth.jpg"
               alt="logo de la tienda"
             />
           </Link>
