@@ -20,7 +20,7 @@ export const Dashboard = () => {
             <Header onToggleTheme={toggleTheme} theme={theme} />
             <div className="background-store">
                 <img
-                    src="/public/images/fondo.jpg"
+                    src="/images/fondo.jpg"
                     alt="fondo de presentacion de la store"
                 />
             </div>
