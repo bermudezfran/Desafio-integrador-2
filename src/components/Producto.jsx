@@ -51,7 +51,7 @@ export const Producto = () => {
           <h2 className="card__heading">{selectedProduct?.nombre}</h2>
           <div className="card__description">
                 <p>
-                  <b>{selectedProduct.precio}</b>
+                  <b>${selectedProduct.precio}</b>
                 </p>
                 <p>{selectedProduct.descripcion}</p>
               </div>
