@@ -27,12 +27,6 @@ export const Producto = () => {
             </div>
             <div className="card__content">
               <h2 className="card__heading">{prod.nombre}</h2>
-              <div className="card__description">
-                <p>
-                  <b>{prod.precio}</b>
-                </p>
-                <p>{prod.descripcion}</p>
-              </div>
               <button
                 className="card__boton"
                 onClick={() => handleOpenModal(prod)}
@@ -48,8 +42,12 @@ export const Producto = () => {
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           <img className="card__image" src={selectedProduct?.foto} alt={selectedProduct?.nombre} />
           <h2 className="card__heading">{selectedProduct?.nombre}</h2>
-          <p><b>Precio:</b> {selectedProduct?.precio}</p>
-          <p><b>Descripción:</b> {selectedProduct?.descripcion}</p>
+          <div className="card__description">
+                <p>
+                  <b>{selectedProduct.precio}</b>
+                </p>
+                <p>{selectedProduct.descripcion}</p>
+              </div>
           <button className="card__boton" style={{ margin: 'auto', marginTop: '10px' }}>Comprar</button>
         </Modal>
       )}
