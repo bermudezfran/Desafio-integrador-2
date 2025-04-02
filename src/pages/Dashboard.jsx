@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import '../sass/main.scss';
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Productos } from "../components/Productos";
 
 export const Dashboard = () => {
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+    useEffect(() => {
+        // Aplica el tema en el cuerpo
+        document.body.classList.toggle("dark-theme", theme === "dark");
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    };
 
     return (
         <div>
-            <Header />
+            <Header onToggleTheme={toggleTheme} theme={theme} />
             <div className="background-store">
                 <img
                     src="/public/images/fondo.jpg"

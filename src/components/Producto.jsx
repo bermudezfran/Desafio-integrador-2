@@ -1,38 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import productos from "../db/productos";
 import '../sass/main.scss';
 
 export const Producto = () => {
-  useEffect(() => {
-      const themeToggle = document.querySelector('.theme-toggle');
-      if (themeToggle) {
-        
-        if (localStorage.getItem('theme') === 'dark') {
-          document.body.classList.add('dark-theme'); // Corregido: classList en lugar de classNameList
-          themeToggle.textContent = '⚪';
-        }
   
-        themeToggle.addEventListener('click', () => {
-          document.body.classList.toggle('dark-theme'); // Corregido: classList en lugar de classNameList
-  
-          if (document.body.classList.contains('dark-theme')) {
-            themeToggle.textContent = '⚪';
-            localStorage.setItem('theme', 'dark');
-          } else {
-            themeToggle.textContent = '⚫';
-            localStorage.setItem('theme', 'light');
-          }
-        });
-      }
-  
-      
-      return () => {
-        if (themeToggle) {
-          themeToggle.removeEventListener('click', () => {}); // Elimina el listener
-        }
-      };
-    }, []);
-
   return productos.map((prod, idx) => (
     <section className="card-container" id="cards-container" key={idx}>
       <div className="card">

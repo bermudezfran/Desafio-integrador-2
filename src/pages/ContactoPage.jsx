@@ -1,42 +1,21 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Header } from '../components/Header';
 import '../sass/main.scss';
 
 export const ContactoPage = () => {
+const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   useEffect(() => {
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-      // Comprobar y establecer el tema inicial
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-theme'); // Corregido: classList en lugar de classNameList
-        themeToggle.textContent = '⚪';
-      }
+    document.body.classList.toggle("dark-theme", theme === "dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
-      // Añadir evento para alternar el tema
-      themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme'); // Corregido: classList en lugar de classNameList
-
-        if (document.body.classList.contains('dark-theme')) {
-          themeToggle.textContent = '⚪';
-          localStorage.setItem('theme', 'dark');
-        } else {
-          themeToggle.textContent = '⚫';
-          localStorage.setItem('theme', 'light');
-        }
-      });
-    }
-
-    // Limpieza del evento al desmontar el componente
-    return () => {
-      if (themeToggle) {
-        themeToggle.removeEventListener('click', () => {}); // Elimina el listener
-      }
-    };
-  }, []);
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
 
   return (
     <>
-      <Header />
+      <Header theme={theme} onToggleTheme={toggleTheme} />
       <main className="contact-main">
         <section className="contact-section">
           <div className="contact-section__container">
