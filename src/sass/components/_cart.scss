@@ -1,8 +1,48 @@
+@use '../base/variables';
+
 .cart {
+    margin-top: 1em;
+    margin-bottom: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid black;
+    width: 70%;
+}
 
+.info {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 1em;
+    gap: 1em;
+}
+
+.cartItem {
+    display: flex;
+    width: 100%;
+}
+
+.imgCart {
+    width: 50%;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.deleteItem {
+    cursor: pointer;
+    padding: 1em;
+    border: none;
+    border-radius: 16px;
+}
+
+.deleteItem:hover {
+    background-color: variables.$color-3;
+}
+
+.deleteItem:active {
+    transform: scale(1.1);
 }
