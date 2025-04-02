@@ -1,0 +1,23 @@
+@use '../base/variables';
+
+.theme-toggle {
+    position: fixed; 
+    top: 1rem; 
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem; 
+    cursor: pointer;
+    z-index: 999;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+    &:hover,
+    &:focus {
+      opacity: 0.7;
+      transform: scale(0.8);
+    }
+  }
+
+.dark-theme .theme-toggle{
+    transform: rotate(180deg);
+}

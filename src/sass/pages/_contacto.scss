@@ -1,0 +1,119 @@
+@use "../base/variables";
+
+.contact-main {
+  background-color: variables.$color-5;
+  color: variables.$color-4;
+  min-height: calc(100vh - 80px); 
+  padding: 2rem 1rem;
+}
+
+.main-header {
+    background-color: variables.$color-3;
+}
+
+
+.contact-section {
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: variables.$color-1;
+  color: variables.$color-4;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  
+  &__field {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    input,
+    textarea {
+      font: inherit; 
+      padding: 0.5rem;
+      border: 1px solid variables.$color-4;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: variables.$color-4;
+      }
+    }
+  }
+
+
+  &__button {
+    align-self: center;
+    background-color: variables.$color-2;
+    color: variables.$color-3;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover,
+    &:focus {
+      background-color: variables.$color-2;
+    }
+  }
+}
+
+.dark-theme {
+  .contact-main {
+    background-color: variables.$color-1;
+    color: variables.$color-4;
+  }
+
+  .contact-form {
+    background-color: variables.$color-4;
+    color: variables.$color-1;
+
+    input,
+    textarea {
+      border: 1px solid variables.$color-1;
+      background-color: variables.$color-3;
+      color: variables.$color-1;
+    }
+
+    &__button {
+      background-color: variables.$color-1;
+      color: variables.$color-3;
+
+      &:hover,
+      &:focus {
+        background-color: variables.$color-1;
+      }
+    }
+  }
+
+}

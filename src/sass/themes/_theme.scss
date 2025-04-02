@@ -1,0 +1,38 @@
+@use '../base/variables';
+
+
+.dark-theme {
+    body {
+        background-color: variables.$color-2;
+    }
+
+    .nav-bar{
+        &__nav-link{
+            color: variables.$color-2;
+        }
+    }
+    .search-bar{
+        &__form-search{
+            background-color: variables.$color-2;
+            color: variables.$color-4;
+        }
+        &__form-submit{
+            background-color: variables.$color-2;
+            color: variables.$color-4;
+        }
+    }
+
+    html,
+    main,
+    .section-cards,
+    .cards-container {
+        background-color: variables.$color-2;
+        color: variables.$color-4;
+    }
+
+    .formulario{
+        background-color: variables.$color-2;
+    }
+
+    
+}

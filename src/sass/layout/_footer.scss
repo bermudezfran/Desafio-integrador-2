@@ -1,0 +1,28 @@
+@use '../base/variables';
+
+.footer {
+    background-color: variables.$color-4;
+    color: variables.$color-1;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  
+    &__text {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+
+.dark-theme {
+.footer {
+    background-color: variables.$color-1;
+    color: variables.$color-4;
+    border-top: 1px solid variables.$color-3;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  
+    &__text {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+}

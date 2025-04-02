@@ -1,0 +1,63 @@
+@use '../base/variables';
+
+.about-header {
+  background-color: variables.$color-4; 
+  color: variables.$color-1;
+  padding: 2rem 1rem;
+  text-align: center;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 400;
+  }
+}
+
+.about-main {
+  display: flex;
+  justify-content: center;
+  border: 1px solid variables.$color-1;
+  background-color: variables.$color-5;
+  color: variables.$color-1;
+  height: 100dvh;
+  padding: 2rem 1rem;
+  
+  .about-section {
+    &__container {
+      max-width: 800px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 50px;
+      border: 2px solid variables.$color-1;
+    }
+
+
+    &__title {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    &__text {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+}
