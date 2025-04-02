@@ -1,7 +1,10 @@
 import React from 'react'
+import { Header } from '../components/Header'
 
 export const NosotrosPage = () => {
   return (
-    <div>NosotrosPage</div>
+    <>
+    <Header />
+    </>
   )
 }

@@ -1,7 +1,11 @@
 import React from 'react'
+import { Header } from '../components/Header'
 
 export const ContactoPage = () => {
   return (
-    <div>ContactoPage</div>
+    <>
+    <Header />
+    
+    </>
   )
 }
