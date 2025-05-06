@@ -1,9 +1,34 @@
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthStore } from "./stores/useAuthStore";
+import {Dashboard} from "./pages/Dashboard";
+import {ContactoPage} from "./pages/ContactoPage";
+import {NosotrosPage} from "./pages/NosotrosPage";
+import {CarritoPage} from "./pages/CarritoPage";
+import AuthPage from "./pages/AuthPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-import { Dashboard } from './pages/Dashboard'
+export default function App() {
+  const token = useAuthStore((state) => state.token);
 
-function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/contacto" element={<ContactoPage />} />
+        <Route path="/nosotros" element={<NosotrosPage />} />
+        <Route 
+          path="/carrito" 
+          element={
+            <ProtectedRoute isAllowed={!!token}>
+              <CarritoPage />
+            </ProtectedRoute>
+          } 
+        />
+        <Route path="/auth" element={<AuthPage />} />
 
-  return <Dashboard />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
