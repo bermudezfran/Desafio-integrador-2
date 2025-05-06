@@ -1,50 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Header } from "../components/Header";
-import { useCarrito } from "../context/CartStore";
+import { useCartStore } from "../stores/useCartStore";
 
 export const CarritoPage = () => {
+  const items = useCartStore((state) => state.items);
+  const removeItem = useCartStore((state) => state.removeItem);
 
-  const { carrito, eliminarDelCarrito } = useCarrito();
-
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-
-  useEffect(() => {
-    document.body.classList.toggle("dark-theme", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
-
-  const handleDeleteItem = (id) => {
-    eliminarDelCarrito(id);
-  };
-
-  const total = () => {
-    return carrito.reduce((acc, producto) => {
-      const precio = parseFloat(producto.precio.replace(/[^0-9.-]+/g, ""));
-      return acc + precio;
-    }, 0);
-  };
+  const total = items.reduce(
+    (acc, { product, qty }) => acc + product.price * qty,
+    0
+  );
 
   return (
     <>
-      <Header theme={theme} onToggleTheme={toggleTheme} />
+      <Header />
       <div className="cart">
-        {carrito.length > 0 ? (
-          carrito.map((producto) => (
-            <div key={producto.id} className="cartItem">
+        {items.length > 0 ? (
+          items.map(({ product, qty }) => (
+            <div key={product.id} className="cartItem">
               <div className="imgContainer">
-                <img src={producto.foto} alt={producto.nombre} />
+                <img src={product.image} alt={product.name} />
               </div>
               <div className="info">
-                <h2>{producto.nombre}</h2>
-                <p>{producto.descripcion}</p>
-                <span className="price">Precio: ${producto.precio}</span>
+                <h2>{product.name}</h2>
+                <p>{product.description}</p>
+                <span className="price">
+                  Precio: ${product.price} × {qty}
+                </span>
                 <button
                   className="deleteItem"
-                  onClick={() => handleDeleteItem(producto.id)}
+                  onClick={() => removeItem(product.id)}
                 >
                   Eliminar
                 </button>
@@ -55,7 +40,7 @@ export const CarritoPage = () => {
           <p>Tu carrito está vacío</p>
         )}
         <div className="total">
-          <h3>Total: ${total().toFixed(3)}</h3>
+          <h3>Total: ${total.toFixed(2)}</h3>
         </div>
       </div>
     </>
