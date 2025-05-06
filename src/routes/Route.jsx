@@ -4,7 +4,7 @@ import { ContactoPage } from "../pages/ContactoPage";
 import { NosotrosPage } from "../pages/NosotrosPage";
 import { Dashboard } from "../pages/Dashboard";
 import { CarritoPage } from "../pages/CarritoPage";
-import { AuthPage } from "../pages/AuthPage";
+import AuthPage from "../pages/AuthPage";
 
 export default function IndexRoute() {
     return (
