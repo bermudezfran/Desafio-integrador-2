@@ -1,6 +1,7 @@
-# Desafio-integrador-2
+# Desafio-integrador-final
 
 ### Nombre: Francisco Bermúdez
-### Link GitHub: [https://github.com/bermudezfran/Desafio-integrador-2]
-### Link Netlify: [https://desafio-integrador-dos.netlify.app/]
-### Link Mockapi: [https://mockapi.io/projects/67ed8af34387d9117bbdf249]
+### Link GitHub: [https://github.com/bermudezfran/Desafio-integrador-final]
+### Link Netlify: [https://desafio-integrador-final.netlify.app/]
+### Link Railway: [back-integrador-production.up.railway.app]
+### Link backend: [https://github.com/bermudezfran/back-integrador]
