@@ -18,21 +18,19 @@ export const CarritoPage = () => {
   const handlePurchase = async () => {
     if (items.length === 0) return
     try {
-      // 1) Preparo el payload
       const payload = {
         items: items.map(({ product, qty }) => ({
           productId: product._id,
           qty
         }))
       }
-      // 2) Llamo al endpoint protegido
+
       await api.post("/orders", payload)
-      // 3) Limpio el carrito y redirijo o muestro Confirmación
+
       clearCart()
-      navigate("/")  // por ejemplo vuelvo al home
+      navigate("/")  
     } catch (err) {
       console.error("Error al crear compra:", err)
-      // aquí podrías setear un estado de error y mostrar mensaje
     }
   }
 
