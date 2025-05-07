@@ -7,6 +7,7 @@ import {NosotrosPage} from "./pages/NosotrosPage";
 import {CarritoPage} from "./pages/CarritoPage";
 import AuthPage from "./pages/AuthPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AddProduct from "./pages/AddProduct";
 
 export default function App() {
   const token = useAuthStore((state) => state.token);
@@ -26,6 +27,7 @@ export default function App() {
           } 
         />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/admin/add-product" element={<AddProduct />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
