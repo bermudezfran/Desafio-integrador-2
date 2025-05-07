@@ -1,9 +1,14 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
 import "../sass/main.scss";
-import { Modal } from "./modal/Modal";
+import { useAuthStore } from "../stores/useAuthStore";
 
 export const Header = ({ onToggleTheme, theme }) => {
+
+  const token = useAuthStore((state) => state.token);
+  const logout = useAuthStore((state) => state.logout);
+  const login = useAuthStore((state) => state.login);
 
   return (
     <header className="main-header">
@@ -34,8 +39,15 @@ export const Header = ({ onToggleTheme, theme }) => {
           <li>
             <Link to="/contacto">Contacto</Link>
           </li>
+          <li>
+            {token && <Link to="/admin/add-product">Agregar producto</Link>}
+            
+          </li>
         </ul>
-        <div>
+        <div className="container-icons">
+        <Link to="/auth">
+              {token ? (<span onClick={logout}>Cerrar sesión</span>) : <span onClick={login}>Iniciar sesión</span>}
+            </Link>
             <Link to='/carrito'>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -133,6 +133,17 @@
       }
     }
   }
+  .container-icons {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+
+  span {
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+  }
 }
 
 .dark-theme {
