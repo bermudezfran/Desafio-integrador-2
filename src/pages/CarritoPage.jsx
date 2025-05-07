@@ -1,12 +1,40 @@
-
 import React from "react"
 import { Header } from "../components/Header"
 import { useCartStore } from "../stores/useCartStore"
+import api from "../services/api"
+import { useNavigate } from "react-router-dom"
 
 export const CarritoPage = () => {
-  const items = useCartStore(state => state.items)
-  const removeItem = useCartStore(state => state.removeItem)
-  const total = items.reduce((acc, { product, qty }) => acc + product.price * qty, 0)
+  const navigate = useNavigate()
+  const items     = useCartStore(state => state.items)
+  const removeItem= useCartStore(state => state.removeItem)
+  const clearCart = useCartStore(state => state.clearCart)
+
+  const total = items.reduce(
+    (acc, { product, qty }) => acc + product.price * qty,
+    0
+  )
+
+  const handlePurchase = async () => {
+    if (items.length === 0) return
+    try {
+      // 1) Preparo el payload
+      const payload = {
+        items: items.map(({ product, qty }) => ({
+          productId: product._id,
+          qty
+        }))
+      }
+      // 2) Llamo al endpoint protegido
+      await api.post("/orders", payload)
+      // 3) Limpio el carrito y redirijo o muestro Confirmación
+      clearCart()
+      navigate("/")  // por ejemplo vuelvo al home
+    } catch (err) {
+      console.error("Error al crear compra:", err)
+      // aquí podrías setear un estado de error y mostrar mensaje
+    }
+  }
 
   return (
     <>
@@ -36,9 +64,18 @@ export const CarritoPage = () => {
         ) : (
           <p>Tu carrito está vacío</p>
         )}
-        <div className="total">
-          <h3>Total: ${total.toFixed(2)}</h3>
-        </div>
+
+        {items.length > 0 && (
+          <div className="actions" style={{ marginTop: "1rem" }}>
+            <h3>Total: ${total.toFixed(2)}</h3>
+            <button
+              className="button-submit"
+              onClick={handlePurchase}
+            >
+              Comprar
+            </button>
+          </div>
+        )}
       </div>
     </>
   )
