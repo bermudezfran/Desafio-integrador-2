@@ -1,15 +1,12 @@
-import React from "react";
-import { Header } from "../components/Header";
-import { useCartStore } from "../stores/useCartStore";
+
+import React from "react"
+import { Header } from "../components/Header"
+import { useCartStore } from "../stores/useCartStore"
 
 export const CarritoPage = () => {
-  const items = useCartStore((state) => state.items);
-  const removeItem = useCartStore((state) => state.removeItem);
-
-  const total = items.reduce(
-    (acc, { product, qty }) => acc + product.price * qty,
-    0
-  );
+  const items = useCartStore(state => state.items)
+  const removeItem = useCartStore(state => state.removeItem)
+  const total = items.reduce((acc, { product, qty }) => acc + product.price * qty, 0)
 
   return (
     <>
@@ -17,7 +14,7 @@ export const CarritoPage = () => {
       <div className="cart">
         {items.length > 0 ? (
           items.map(({ product, qty }) => (
-            <div key={product.id} className="cartItem">
+            <div key={product._id} className="cartItem">
               <div className="imgContainer">
                 <img src={product.image} alt={product.name} />
               </div>
@@ -29,7 +26,7 @@ export const CarritoPage = () => {
                 </span>
                 <button
                   className="deleteItem"
-                  onClick={() => removeItem(product.id)}
+                  onClick={() => removeItem(product._id)}
                 >
                   Eliminar
                 </button>
@@ -44,5 +41,5 @@ export const CarritoPage = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
